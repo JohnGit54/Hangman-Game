@@ -5,41 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <style>
+    <link href="https://fonts.googleapis.com/css?family=BioRhyme" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        #container{
-            display:flex;
-            flex-direction: row;
-        }
-        #header{
-            flex:1;
-            background: dodgerblue;
-            color: black;
-            text-align: center;
-            border: 1 solid  #000;
-        }
-        h3,
-        #header3{
-            flex:1;
-            flex-e
-             
-        }
-    </style>
+    <title>Hangman</title>
+
+
 
 </head>
 
 <body>
+
+    <header class="jumbotron img-rounded">
+        <h1>Hangman Game </h1>
+        <h3>by John Palumbo</h3>
+    </header>
+
+
     <div class="container">
+        <div class="game-box" >
+            <h4>Rules</h4>
+            <hr> 
+            <ul>
+                <li>Press any key to start</li>
+                <li>You'll have 10 guesses to figure out the mystery word</li>
+                <li>Guess right- the dashes will fill in</li>
+                <li>Guess wrong and watch parts of the hangman fill in</li>
+            </ul>
 
-        <div id="header">
-            <h1>Hangman game </h1>
         </div>
-        <div id="header3">
-            <h3>by John Palumbo</h3>
+        <div class="game-box border img-responsive" >
+            <img src="assets/images/0.jpg" alt="start hangman" id="myImage">
         </div>
-
+        <div class="game-box" id="box3">
+            <h4>Number of Guesses left:</h4>
+            <div id="guessremain">10</div>
+            <h4>Letters Guessed:</h4>
+            <div id="lettersguessed">&nbsp;</div>
+        </div>
     </div>
 
 </body>

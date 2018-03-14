@@ -1,0 +1,66 @@
+body{
+    background-image: url("../images/westbackground.jpg");
+    font-family: BioRhyme , serif; 
+    box-sizing: border-box;
+}
+
+
+.jumbotron{
+    background-color: burlywood;
+    opacity: .8;
+    width: 60%;
+    margin: 0 20%;
+    font-family: BioRhyme , serif;   
+}
+
+header{
+    background: dodgerblue;
+    color: black;
+    text-align: center;
+    border: 1 solid  #000;
+} 
+     
+.container{
+    padding: 1%;
+    display:flex; 
+    max-width: 1020px;
+    margin:5% auto 0 auto;
+    background-color: burlywood;
+    justify-content: center;  
+    /* align-items: center;  */
+    line-height: 2;
+}
+
+.container h4{
+     text-align: center;
+}
+
+.game-box{
+    flex: 1;
+    background: azure;
+    flex-basis:  33;
+    font-size: 18px;    
+    padding: 3px 2px 0 2px;   
+}
+
+#myImage{
+    display: block;
+    margin: 0 auto;
+    /* align-content: center; */
+    /* align-self: center; */
+}
+
+#box3 h4{
+    display: inline;
+}
+#guessremain,
+#lettersguessed{
+    background: black;
+    color: white;
+    font-size: 36px;
+    margin: 0 30px 0 0;
+    align-content: center;
+    text-align: center;
+    padding: 1px 10px;
+
+}
