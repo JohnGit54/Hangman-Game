@@ -14,6 +14,7 @@
 
     <title>Hangman</title>
 
+    <!-- <script src="assets/javascript/game.js"></script> -->
 
 
 </head>
@@ -27,9 +28,9 @@
 
 
     <div class="container">
-        <div class="game-box" >
+        <div class="game-box">
             <h4>Rules</h4>
-            <hr> 
+            <hr>
             <ul>
                 <li>Press any key to start</li>
                 <li>You'll have 10 guesses to figure out the mystery word</li>
@@ -38,17 +39,62 @@
             </ul>
 
         </div>
-        <div class="game-box border img-responsive" >
+        <div class="game-box border img-responsive">
             <img src="assets/images/0.jpg" alt="start hangman" id="myImage">
         </div>
         <div class="game-box" id="box3">
             <h4>Number of Guesses left:</h4>
             <div id="guessremain">10</div>
-            <h4>Letters Guessed:</h4>
-            <div id="lettersguessed">&nbsp;</div>
+            <h4>Letters Available:</h4>
+            <div class="container-fluid containerletters">
+                <div class="row">
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="a3">A</div>
+                    <div class="col-sm-2 lettercircle" id="b3">B</div>
+                    <div class="col-sm-2 lettercircle" id="c3">C</div>
+                    <div class="col-sm-2 lettercircle" id="d3">D</div>
+                    <div class="col-sm-2 lettercircle" id="e3">E</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="f3">F</div>
+                    <div class="col-sm-2 lettercircle" id="g3">G</div>
+                    <div class="col-sm-2 lettercircle" id="h3">H</div>
+                    <div class="col-sm-2 lettercircle" id="i3">I</div>
+                    <div class="col-sm-2 lettercircle" id="j3">J</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="k3">K</div>
+                    <div class="col-sm-2 lettercircle" id="l3">L</div>
+                    <div class="col-sm-2 lettercircle" id="m3">M</div>
+                    <div class="col-sm-2 lettercircle" id="n3">N</div>
+                    <div class="col-sm-2 lettercircle" id="o3">O</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="p3">P</div>
+                    <div class="col-sm-2 lettercircle" id="q3">Q</div>
+                    <div class="col-sm-2 lettercircle" id="r3">R</div>
+                    <div class="col-sm-2 lettercircle" id="s3">S</div>
+                    <div class="col-sm-2 lettercircle" id="t3">T</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-offset-3 lettercircle" id="u3">U</div>
+                    <div class="col-sm-2 lettercircle" id="v3">V</div>
+                    <div class="col-sm-2 lettercircle" id="w3">W</div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-offset-3 lettercircle" id="x3">X</div>
+                    <div class="col-sm-2 lettercircle" id="y3">Y</div>
+                    <div class="col-sm-2 lettercircle" id="z3">Z</div>
+                </div>
+            </div>
         </div>
     </div>
 
+
+
+
+    <script src=" assets/javascript/game.js "></script>
 </body>
 
 </html>
