@@ -24,6 +24,11 @@
     <header class="jumbotron img-rounded">
         <h1>Hangman Game </h1>
         <h3>by John Palumbo</h3>
+        <div class="panel panel-default">
+                <div class="panel-body" id="mysteryWord">
+                  &nbsp; _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  &nbsp;
+                </div>
+              </div>
     </header>
 
 
@@ -36,56 +41,57 @@
                 <li>You'll have 10 guesses to figure out the mystery word</li>
                 <li>Guess right- the dashes will fill in</li>
                 <li>Guess wrong and watch parts of the hangman fill in</li>
+                <li>After game ends, press spacebar to reset and start game</li>
             </ul>
 
         </div>
         <div class="game-box border img-responsive">
-            <img src="assets/images/0.jpg" alt="start hangman" id="myImage">
+            <img src="assets/images/4.jpg" alt="start hangman" id="myImage">
         </div>
         <div class="game-box" id="box3">
             <h4>Number of Guesses left:</h4>
-            <div id="guessremain">10</div>
+            <div id="guessremain">0</div>
             <h4>Letters Available:</h4>
             <div class="container-fluid containerletters">
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="a3">A</div>
-                    <div class="col-sm-2 lettercircle" id="b3">B</div>
-                    <div class="col-sm-2 lettercircle" id="c3">C</div>
-                    <div class="col-sm-2 lettercircle" id="d3">D</div>
-                    <div class="col-sm-2 lettercircle" id="e3">E</div>
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="A3">A</div>
+                    <div class="col-sm-2 lettercircle" id="B3">B</div>
+                    <div class="col-sm-2 lettercircle" id="C3">C</div>
+                    <div class="col-sm-2 lettercircle" id="D3">D</div>
+                    <div class="col-sm-2 lettercircle" id="E3">E</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="f3">F</div>
-                    <div class="col-sm-2 lettercircle" id="g3">G</div>
-                    <div class="col-sm-2 lettercircle" id="h3">H</div>
-                    <div class="col-sm-2 lettercircle" id="i3">I</div>
-                    <div class="col-sm-2 lettercircle" id="j3">J</div>
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="F3">F</div>
+                    <div class="col-sm-2 lettercircle" id="G3">G</div>
+                    <div class="col-sm-2 lettercircle" id="H3">H</div>
+                    <div class="col-sm-2 lettercircle" id="I3">I</div>
+                    <div class="col-sm-2 lettercircle" id="J3">J</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="k3">K</div>
-                    <div class="col-sm-2 lettercircle" id="l3">L</div>
-                    <div class="col-sm-2 lettercircle" id="m3">M</div>
-                    <div class="col-sm-2 lettercircle" id="n3">N</div>
-                    <div class="col-sm-2 lettercircle" id="o3">O</div>
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="K3">K</div>
+                    <div class="col-sm-2 lettercircle" id="L3">L</div>
+                    <div class="col-sm-2 lettercircle" id="M3">M</div>
+                    <div class="col-sm-2 lettercircle" id="N3">N</div>
+                    <div class="col-sm-2 lettercircle" id="O3">O</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="p3">P</div>
-                    <div class="col-sm-2 lettercircle" id="q3">Q</div>
-                    <div class="col-sm-2 lettercircle" id="r3">R</div>
-                    <div class="col-sm-2 lettercircle" id="s3">S</div>
-                    <div class="col-sm-2 lettercircle" id="t3">T</div>
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="P3">P</div>
+                    <div class="col-sm-2 lettercircle" id="Q3">Q</div>
+                    <div class="col-sm-2 lettercircle" id="R3">R</div>
+                    <div class="col-sm-2 lettercircle" id="S3">S</div>
+                    <div class="col-sm-2 lettercircle" id="T3">T</div>
 
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-3 lettercircle" id="u3">U</div>
-                    <div class="col-sm-2 lettercircle" id="v3">V</div>
-                    <div class="col-sm-2 lettercircle" id="w3">W</div>
-                    
+                    <div class="col-sm-2 col-sm-offset-2 lettercircle" id="U3">U</div>
+                    <div class="col-sm-2 lettercircle" id="V3">V</div>
+                    <div class="col-sm-2 lettercircle" id="W3">W</div>
+                    <div class="col-sm-2 lettercircle" id="X3">X</div>
+                    <div class="col-sm-2 lettercircle" id="Y3">Y</div>
+
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-3 lettercircle" id="x3">X</div>
-                    <div class="col-sm-2 lettercircle" id="y3">Y</div>
-                    <div class="col-sm-2 lettercircle" id="z3">Z</div>
+                    <div class="col-sm-2 col-sm-offset-5 lettercircle" id="Z3">Z</div>
                 </div>
             </div>
         </div>
