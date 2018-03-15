@@ -9,6 +9,7 @@ var incorrectGuesses = 0
 var letterPressed = "";
 var wins = 0;
 var losses = 0;
+var mysteryWord;
 
 var alpray = [["A", 0], ["B", 0], ["C", 0],
 ["D", 0], ["E", 0], ["F", 0],
@@ -20,11 +21,15 @@ var alpray = [["A", 0], ["B", 0], ["C", 0],
 ["V", 0], ["W", 0], ["X", 0],
 ["Y", 0], ["Z", 0]];
 
-var randomword = ["President", "longtime", "personal",
-    "aide", "fired", "investigation", "Secret",
-    "Service", "financial", "crimes"];
+var randomword = ["PRESIDENT", "LONGTIME", "PERSONAL",
+    "FIRED", "INVESTIGATION", "SECRET",
+    "SERVICE", "FINANCIAL", "CRIMES"];
 
 var mysteryH = document.getElementById("mysteryWord");
+//put blanks in panel
+var st;
+var stDisplay = []; //this is used innerhtml panel
+var stHidden = []; // this represents array - one for each letter
 
 //end of globals
 
@@ -42,26 +47,23 @@ function initializeGame() {
 
     //pick random word
     var randX = Math.floor(Math.random() * randomword.length);
-    var mysteryWord = randomword[randX];
-     console.log("mysteryWord: " + mysteryWord, randX);
+    mysteryWord = randomword[randX];
+    console.log("mysteryWord: " + mysteryWord, randX);
 
-    //put blanks in panel
-    var st; 
-    var stDisplay = []; //this is used innerhtml panel
-    var stHidden = []; // this represents array - one for each letter
+    
     for (let index = 0; index < mysteryWord.length; index++) {
-        st = "&nbsp;&nbsp"   + "_" + "&nbsp;&nbsp"   ;
-        stDisplay.push(st)  ;
-         st = "&nbsp;&nbsp;"  + mysteryWord[index] + "&nbsp; &nbsp;"     ;
-         stHidden.push(st) ;
+        st = "&nbsp;&nbsp" + "_" + "&nbsp;&nbsp";
+        stDisplay.push(st);
+        st = "&nbsp;&nbsp;" + mysteryWord[index] + "&nbsp; &nbsp;";
+        stHidden.push(st);
     };
-    console.log("st: "+ stDisplay );
-    console.log("st: "+ stHidden );
+    console.log("st: " + stDisplay);
+    console.log("st: " + stHidden);
     st = "";
     stDisplay.forEach(element => {
-        st += element        
+        st += element
     });
-
+    
     document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
     document.getElementById("guessremain").innerHTML = guessnum;
 
@@ -79,10 +81,41 @@ function blackoutLetter(myId) {
     document.getElementById(myId).style.background = "red";
 }
 
-function checkLetter(ltr){
-    var ind = mysteryWord.findIndex;
-    console.log("checkltr",mysteryWord,ltr,);
-    // if ()
+function checkLetter(ltr) {
+    //var ind = mysteryWord.findIndex;
+    console.log("checkltr", mysteryWord, ltr, );
+    var found = false;
+    for (let i = 0; i < mysteryWord.length; i++) {
+        if (mysteryWord[i] === ltr) {
+            found = true;
+            stDisplay[i] = "&nbsp;&nbsp;" + mysteryWord[i] + "&nbsp;&nbsp;";
+            mysteryWord[i] = " ";
+            console.log(mysteryWord);
+        }
+    }
+
+    updateStatus(found);
+}
+
+function updateStatus(goodletter) {
+    if (!goodletter) {
+        guessnum -= 1;
+        incorrectGuesses += 1;
+        document.getElementById("myImage").src = "assets/images/" + incorrectGuesses + ".jpg";
+        st = "";
+        stDisplay.forEach(element => {
+            st += element
+        });
+        document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
+        document.getElementById("guessremain").innerHTML = guessnum;
+
+    }else{
+        st = "";
+        stDisplay.forEach(element => {
+            st += element
+        });
+        document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
+    }
 }
 
 //start processing code
@@ -116,18 +149,12 @@ document.onkeyup = function (event) {
         // console.log(alpray[indx][1]);
         if (alpray[indx][1] === 0) {
             alpray[indx][1] += 1;
+            console.log("before blackout", letterPressed);
             blackoutLetter(letterPressed + 3);
+            console.log("before checkletter", letterPressed);
             checkLetter(letterPressed);
+            console.log("aftr checkletter", letterPressed);            
         }
-
-    } else { return; }
-
-
-
-
-
-
-
-
+    }  
 
 }
