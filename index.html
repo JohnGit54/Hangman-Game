@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=BioRhyme" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <title>Hangman</title>
@@ -45,16 +46,15 @@
             <h4>Rules</h4>
             <hr>
             <ul>
-                <li>Press any key to start</li>
-                <li>You'll have 10 guesses to figure out the mystery word</li>
+                <li>Press spacebar to start, and reset after game ends</li>
+                <li>You'll have 10 guesses to figure out the mystery Old West word</li>
                 <li>Guess right- the dashes will fill in</li>
                 <li>Guess wrong and watch parts of the hangman fill in</li>
-                <li>After game ends, press spacebar to reset and start game</li>
             </ul>
 
         </div>
         <div class="game-box border img-responsive">
-            <img src="assets/images/4.jpg" alt="start hangman" id="myImage">
+            <img src="assets/images/0.jpg" alt="start hangman" id="myImage">
         </div>
         <div class="game-box" id="box3">
             <h4>Number of Guesses left:</h4>
@@ -106,7 +106,11 @@
     </div>
 
 
+    <div class="footer navbar-fixed-bottom">
+        Hangman pictures found Website: http://oligalma.com and 
+        https://creativecommons.org/licenses/by/4.0/
 
+        </div>
 
     <script src=" assets/javascript/game.js "></script>
 </body>
