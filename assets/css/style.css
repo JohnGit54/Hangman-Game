@@ -96,5 +96,11 @@ header{
     }
     .panel-body{
         font-size: large;
-
+    }
+    #mysteryWord,
+    .weight900{
+        font-weight: 900;
+    }
+    .fontsze20{
+        font-size: 20px;
     }

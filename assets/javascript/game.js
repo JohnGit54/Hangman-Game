@@ -25,7 +25,7 @@ var randomword = ["PRESIDENT", "LONGTIME", "PERSONAL",
     "FIRED", "INVESTIGATION", "SECRET",
     "SERVICE", "FINANCIAL", "CRIMES"];
 
-var mysteryH = document.getElementById("mysteryWord");
+// var mysteryH = document.getElementById("mysteryWord");
 //put blanks in panel
 var st;
 var stDisplay = []; //this is used innerhtml panel
@@ -38,11 +38,14 @@ var stHidden = []; // this represents array - one for each letter
 function initializeGame() {
 
     isGameOver = false;
-    var guessnum = 10;
-    var incorrectGuesses = 0
+    guessnum = 10;
+    incorrectGuesses = 0;
 
     for (let i = 0; i < alpray.length; i++) {
         alpray[i][1] = 0;
+        var j = alpray[i][0] + 3;
+        document.getElementById(j).style.color = "#666";
+        document.getElementById(j).style.background = "#fff";
     }
 
     //pick random word
@@ -50,7 +53,10 @@ function initializeGame() {
     mysteryWord = randomword[randX];
     console.log("mysteryWord: " + mysteryWord, randX);
 
-    
+    //empty the 2 arrays
+    stDisplay.length = 0;
+    stHidden.length = 0;
+
     for (let index = 0; index < mysteryWord.length; index++) {
         st = "&nbsp;&nbsp" + "_" + "&nbsp;&nbsp";
         stDisplay.push(st);
@@ -63,7 +69,7 @@ function initializeGame() {
     stDisplay.forEach(element => {
         st += element
     });
-    
+
     document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
     document.getElementById("guessremain").innerHTML = guessnum;
 
@@ -88,9 +94,10 @@ function checkLetter(ltr) {
     for (let i = 0; i < mysteryWord.length; i++) {
         if (mysteryWord[i] === ltr) {
             found = true;
-            stDisplay[i] = "&nbsp;&nbsp;" + mysteryWord[i] + "&nbsp;&nbsp;";
-            mysteryWord[i] = " ";
-            console.log(mysteryWord);
+            //stDisplay[i] = "&nbsp;&nbsp;" + mysteryWord[i] + "&nbsp;&nbsp;";
+            stDisplay[i] = stHidden[i];
+            stHidden[i] = "";
+            console.log("checkletter shuold have space in letter ", stHidden);
         }
     }
 
@@ -102,20 +109,44 @@ function updateStatus(goodletter) {
         guessnum -= 1;
         incorrectGuesses += 1;
         document.getElementById("myImage").src = "assets/images/" + incorrectGuesses + ".jpg";
-        st = "";
-        stDisplay.forEach(element => {
-            st += element
-        });
-        document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
+        // st = "";
+        // stDisplay.forEach(element => {
+        //     st += element
+        // });
+        // document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
         document.getElementById("guessremain").innerHTML = guessnum;
 
-    }else{
-        st = "";
-        stDisplay.forEach(element => {
-            st += element
-        });
-        document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
     }
+    st = "";
+    stDisplay.forEach(element => {
+        st += element
+    });
+    document.getElementById("mysteryWord").innerHTML = st; //stDisplay;
+
+    checkForGameOver();
+
+}
+
+function checkForGameOver() {
+    if (incorrectGuesses > 9) {
+        isGameOver = true;
+        losses += 1;
+        // return;
+    }
+    var winner = true;
+    stHidden.forEach(element => {
+        if (element !== "") {
+            console.log(" no winner yet")
+            winner = false;
+        } else { console.log(element) }
+    });
+    if (winner) {
+        wins += 1;
+        isGameOver = true;
+    }
+    document.getElementById("gameWins").innerHTML = wins;
+    document.getElementById("gameLosses").innerHTML = losses;
+
 }
 
 //start processing code
@@ -131,6 +162,9 @@ document.onkeyup = function (event) {
         return;
     }
 
+    if (isGameOver) {
+        return;
+    }
     //validate the key pressed - only accept Aplhabet -upper or lower allowed
     if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
         console.log("after init rtne", letterPressed.key);
@@ -149,12 +183,14 @@ document.onkeyup = function (event) {
         // console.log(alpray[indx][1]);
         if (alpray[indx][1] === 0) {
             alpray[indx][1] += 1;
-            console.log("before blackout", letterPressed);
+            // console.log("before blackout", letterPressed);
             blackoutLetter(letterPressed + 3);
-            console.log("before checkletter", letterPressed);
+            // console.log("before checkletter", letterPressed);
             checkLetter(letterPressed);
-            console.log("aftr checkletter", letterPressed);            
+            // console.log("aftr checkletter", letterPressed);            
         }
-    }  
+    }
+
+
 
 }
