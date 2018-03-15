@@ -10,6 +10,7 @@ var letterPressed = "";
 var wins = 0;
 var losses = 0;
 var mysteryWord;
+var playOpeningClip = true;
 
 // these are used by the random(mystery) word and creates the string for 
 // the innerHTML to display 
@@ -191,8 +192,7 @@ function checkForGameOver() {
     if (incorrectGuesses > 9) {
         isGameOver = true;
         losses += 1;
-        var audio = new Audio("assets/sounds/good_bad_ugly.wav");
-        audio.play;
+        playClip("assets/sounds/good_bad_ugly.wav");
         // display the word
         for (let i = 0; i < strHidden.length; i++) {
             if (strHidden[i] > "") {
@@ -221,18 +221,28 @@ function checkForGameOver() {
 
 }
 
+function playClip(soundByte) {
+    var audioElement = document.createElement("audio");
+    audioElement.setAttribute("src", soundByte);
+    audioElement.play();
+
+}
+
 //start processing code
 document.onkeyup = function (event) {
 
     letterPressed = event;
 
     //RESET GAME -- ONLY WHEN GAME IS OVER AND SPACEBAR IS PRESSED
-    if (event.keyCode === 32 && isGameOver) {
+    //if (event.keyCode === 32 && isGameOver) {
+    if ( isGameOver) {
         //Initialize all variables
         initializeGame();
-        //play dirtyharry feel lucky punk
-        var audio = new Audio("assets/sounds/punk.wav");
-        audio.play;
+        if (playOpeningClip) {
+            //play dirtyharry feel lucky punk
+            playClip("assets/sounds/punk.wav");
+            playOpeningClip = false;
+        }
         return;
     }
 
@@ -265,5 +275,5 @@ document.onkeyup = function (event) {
     }
 
 
-
+    // // Gets Link for Theme Song
 }
