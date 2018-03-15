@@ -8,9 +8,10 @@ body{
 .jumbotron{
     background-color: burlywood;
     opacity: .8;
-    width: 60%;
-    margin: 0 20%;
-    font-family: BioRhyme , serif;   
+    width: 80%;
+    margin: 0 10%;
+    font-family: BioRhyme , serif;  
+    height: 20%; 
 }
 
 header{
@@ -23,11 +24,10 @@ header{
 .container{
     padding: 1%;
     display:flex; 
-    max-width: 1020px;
+    /* max-width: 1020px; */
     margin:5% auto 0 auto;
     background-color: burlywood;
     justify-content: center;  
-    /* align-items: center;  */
     line-height: 2;
 }
 
@@ -75,9 +75,9 @@ header{
   
 }
 .lettercircle {
-    float: 1;    
+    /* float: 1;     */
     border-radius: 50%;
-    behavior: url(PIE.htc);
+    /* behavior: url(PIE.htc); */
     width: 36px;
     height: 34px;
     padding: 0 3px 5px 0;
@@ -85,7 +85,7 @@ header{
     border: 2px solid #666;
     color: #666;
     text-align: center;
-    font: 24px ;
+    /* font: 24px ; */
   }
   .row{
      align-content: center;
@@ -93,4 +93,8 @@ header{
 
     #z3{
         text-align: center;
+    }
+    .panel-body{
+        font-size: large;
+
     }
