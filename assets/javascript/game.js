@@ -1,7 +1,5 @@
 
 
-
-
 //global variables
 var isGameOver = true;
 var guessnum = 10;
@@ -228,14 +226,10 @@ function playClip(soundByte) {
 
 }
 
-//start processing code
-document.onkeyup = function (event) {
 
-    letterPressed = event;
-
-    //RESET GAME -- ONLY WHEN GAME IS OVER AND SPACEBAR IS PRESSED
-    //if (event.keyCode === 32 && isGameOver) {
-    if ( isGameOver) {
+function checkGameOverProcess(){
+    //RESET GAME -- ONLY WHEN GAME IS OVER 
+     if ( isGameOver) {
         //Initialize all variables
         initializeGame();
         if (playOpeningClip) {
@@ -246,25 +240,14 @@ document.onkeyup = function (event) {
         return;
     }
 
+}
 
-    //if game is over - do not do anything else.
-    if (isGameOver) {
-        return;
-    }
-
-    //validate the key pressed - only accept Aplhabet -upper or lower allowed
-    if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
-        //console.log("after init rtne", letterPressed.key);
-        letterPressed = letterPressed.key.toUpperCase();
-    } else { return; }
-
-
+function letterPressedProcess(){
     //get the index in the aplhabet array of letter pressed from 2 level array
     // cool line of code 
     var indx = alphabetArr.findIndex(sa => sa[0] === letterPressed);
 
-    //console.log("indx", indx);
-    //check the inde- so we catch any unexplained err.
+     //check the inde- so we catch any unexplained err.
     // black out the letter on screen box3
     if (indx > -1) {
         if (alphabetArr[indx][1] === 0) {   //if the key pressed i.e 'T' - press count equal 0 , then we do more 
@@ -273,7 +256,44 @@ document.onkeyup = function (event) {
             checkLetter(letterPressed);
         }
     }
+    
+}
 
 
-    // // Gets Link for Theme Song
+
+
+//add click event to the divs with the letters
+
+ $(".lettercircle").click(function(){
+      letterPressed = $(this).text();
+         console.log(letterPressed);
+     //play gunshot
+      playClip("assets/sounds/gunshot.mp3");
+     checkGameOverProcess();
+     letterPressedProcess();
+});
+
+
+//start processing code
+document.onkeyup = function (event) {
+
+    letterPressed = event;
+
+    checkGameOverProcess();
+    
+   
+
+    //if game is over - do not do anything else.
+   // if (isGameOver) {
+   //     return;
+   // }
+
+    //validate the key pressed - only accept Aplhabet -upper or lower allowed
+    if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
+        //console.log("after init rtne", letterPressed.key);
+        letterPressed = letterPressed.key.toUpperCase();
+    } else { return; }
+
+    letterPressedProcess();    
+
 }
